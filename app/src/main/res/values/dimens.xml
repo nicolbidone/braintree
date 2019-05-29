@@ -1,0 +1,35 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin_normal">16dp</dimen>
+    <dimen name="activity_horizontal_margin_large">21dp</dimen>
+    <dimen name="activity_horizontal_margin_largest">28dp</dimen>
+    <dimen name="activity_horizontal_margin_small">7dp</dimen>
+    <dimen name="activity_horizontal_margin_smallest">5dp</dimen>
+
+    <!-- TEXT SIZE -->
+    <dimen name="text_size_smaller">10sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_largest">24sp</dimen>
+    <dimen name="text_size_super">40sp</dimen>
+
+    <dimen name="circle_button_size">65dp</dimen>
+    <dimen name="circle_button_size_half">-32dp</dimen>
+    <dimen name="size_accept_button">60dp</dimen>
+    <dimen name="half_size_accept_button">30dp</dimen>
+
+
+    <dimen name="service_type_container_height">90dp</dimen>
+    <dimen name="driver_profile_image_size">60dp</dimen>
+
+    <dimen name="rounded_radius">10dp</dimen>
+
+    <dimen name="service_type_container_margin_start">24dp</dimen>
+    <dimen name="service_type_margin_end">8dp</dimen>
+    <dimen name="img_size">45dp</dimen>
+
+</resources>
