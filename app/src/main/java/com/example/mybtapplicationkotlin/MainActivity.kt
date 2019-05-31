@@ -13,10 +13,15 @@ import com.android.volley.toolbox.Volley
 import com.braintreepayments.api.dropin.DropInActivity
 import com.braintreepayments.api.dropin.DropInRequest
 import com.braintreepayments.api.dropin.DropInResult
+import com.braintreepayments.api.models.GooglePaymentRequest
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.TextHttpResponseHandler
 import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_main.*
+import com.braintreepayments.api.models.VenmoAccountNonce
+import com.braintreepayments.api.dropin.utils.PaymentMethodType
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,11 +44,16 @@ class MainActivity : AppCompatActivity() {
         getToken()
 
         btn_pay.setOnClickListener {
-            val dropInRequest = DropInRequest().clientToken(token)
+            val dropInRequest = DropInRequest()
+                .clientToken(token)
+                .collectDeviceData(true)
+                //.collectDeviceData(Settings.shouldCollectDeviceData(this))
+                //.requestThreeDSecureVerification(Settings.isThreeDSecureEnabled(this))
 
             startActivityForResult(dropInRequest.getIntent(this), REQUEST_CODE)
         }
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_CODE) {
@@ -51,16 +61,20 @@ class MainActivity : AppCompatActivity() {
                 val result = data?.getParcelableExtra<DropInResult>(DropInResult.EXTRA_DROP_IN_RESULT)
                 val nonce = result?.paymentMethodNonce
                 val stringNonce = nonce!!.nonce
+                val deviceData = result.deviceData
 
                 if (!edt_payment.text.toString().isEmpty()) {
                     amount = edt_payment.text.toString();
                     paramsHash = HashMap()
-
                     paramsHash!!["amount"] = amount
                     paramsHash!!["nonce"] = stringNonce
-
                     sendPayments()
-                } else {
+                }
+                if (result.paymentMethodType === PaymentMethodType.PAY_WITH_VENMO) {
+                    val venmoAccountNonce = result.paymentMethodNonce as VenmoAccountNonce
+                    val venmoUsername = venmoAccountNonce.username
+                }
+                else {
                     Toast.makeText(this@MainActivity, "Invalid", Toast.LENGTH_SHORT)
                         .show()
                 }

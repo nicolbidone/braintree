@@ -13,7 +13,7 @@
             android:layout_height="match_parent"
             android:gravity="center">
         <Button
-                android:text="Button"
+                android:text="send pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_pay"/>
@@ -21,9 +21,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="Name"
+                android:text="30"
                 android:ems="10"
-                android:id="@+id/edt_payment"/>
+                android:id="@+id/edt_payment" android:textAlignment="center"/>
     </LinearLayout>
 
 </LinearLayout>
